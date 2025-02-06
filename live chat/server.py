@@ -19,8 +19,6 @@ def generate_unique_code(length:int=3):
             break
     
     return code
-            
-ozylist = ["OzyanikEren","OzyanikBerkay","OzyanikYaren","OzyanikGokce","OzyanikFatma","OzyanikMuhammet"]
 
 @app.route("/",methods=["GET", "POST"])
 def home():
@@ -39,8 +37,6 @@ def home():
         room = code
         if create != False:
             room = generate_unique_code(4)
-            if name in ozylist:
-                room = "OZYNK"
             rooms[room] = {"members":0, "messages" : []}
         elif code not in rooms:
             return render_template("home.html",error="Room does not exist!",code = code,name = name)
